@@ -1,6 +1,6 @@
 import { Component, OnInit, Host, Optional } from '@angular/core';
 import { MoldeService } from 'src/app/Servicios/molde.service';
-import { Molde } from 'src/app/Modelos/molde';
+import { Molde } from 'src/app/Modelos/Molde/molde';
 import { ModulosComponent } from '../../../menu/modulos/modulos.component';
 
 declare var jQuery: any;

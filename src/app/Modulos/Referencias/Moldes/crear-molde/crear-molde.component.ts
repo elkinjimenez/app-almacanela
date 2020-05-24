@@ -8,6 +8,8 @@ import { Parte } from 'src/app/Modelos/parte';
 import { Componente } from 'src/app/Modelos/componente';
 import { Pieza } from 'src/app/Modelos/pieza';
 import { ListarMoldesComponent } from '../listar-moldes/listar-moldes.component';
+import { MoldeCrear } from 'src/app/Modelos/Molde/molde-crear';
+import { MoldeService } from 'src/app/Servicios/molde.service';
 
 declare var jQuery: any;
 declare var $: any;
@@ -26,7 +28,7 @@ export class CrearMoldeComponent implements OnInit {
   listadoComponentes = [] as Componente[];
   listadoPiezas = [] as Pieza[];
 
-  datos = { idLinea: 0, idParte: 0, idComponente: 0, idPieza: 0, comsumo: null, desperdicio: null, imagen: null };
+  datos = { nombre: '', idLinea: 0, idParte: 0, idComponente: 0, idPieza: 0, consumo: null, desperdicio: null, imagen: null };
   botonCrear = { estado: false, texto: 'Crear molde' };
 
   constructor(
@@ -34,7 +36,8 @@ export class CrearMoldeComponent implements OnInit {
     private lineaServicio: LineaService,
     private parteServicio: ParteService,
     private componenteServicio: ComponenteService,
-    private piezaServicio: PiezaService
+    private piezaServicio: PiezaService,
+    private moldeServicio: MoldeService
   ) { }
 
   ngOnInit() {
@@ -171,11 +174,13 @@ export class CrearMoldeComponent implements OnInit {
   }
 
   validarEnvio() {
-    if (this.datos.idLinea !== 0 &&
+    if (
+      this.datos.nombre !== '' &&
+      this.datos.idLinea !== 0 &&
       this.datos.idParte !== 0 &&
       this.datos.idComponente !== 0 &&
       this.datos.idPieza !== 0 &&
-      this.datos.comsumo !== null &&
+      this.datos.consumo !== null &&
       this.datos.desperdicio !== null
     ) {
       this.botonCrear.estado = true;
@@ -195,6 +200,7 @@ export class CrearMoldeComponent implements OnInit {
       };
       this.datos.imagen = null;
       $('#modalNotifica').modal('show');
+      this.imageSrc = '';
     } else {
       const reader = new FileReader();
       reader.onload = this.manejarImagenCargada.bind(this);
@@ -205,6 +211,35 @@ export class CrearMoldeComponent implements OnInit {
   manejarImagenCargada(e) {
     const reader = e.target;
     this.imageSrc = reader.result;
+  }
+
+  crearMoldeListo() {
+    $('#nuevoModel').modal('hide');
+    this.listaMoldes.modulos.principal.notifica = {
+      mensaje: 'Por favor espere...',
+      color: 'purple',
+      nombre: '¡Creando molde!',
+      estado: false
+    };
+    this.datos.imagen = null;
+    $('#modalNotifica').modal('show');
+    const body = {
+      nombre: this.datos.nombre,
+      imagen: this.imageSrc,
+      linea: this.datos.idLinea,
+      parte: this.datos.idParte,
+      componente: this.datos.idComponente,
+      pieza: this.datos.idPieza,
+      consumo: this.datos.consumo,
+      desperdicio: this.datos.desperdicio
+    } as MoldeCrear;
+    this.moldeServicio.postMoldeCrear(body).subscribe(
+      data => {
+        console.log('Crear molde: ', data);
+      }, error => {
+        console.log('Error al crear molde: ', error);
+      }
+    )
   }
 
 }

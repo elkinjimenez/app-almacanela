@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-light white z-depth-0 m-2 rounded">
+  <div class="d-flex justify-content-between">
+    <a id="botonMenu" class="h4" (click)="accionarMenu()">
+      <i class="fas fa-bars  mt-2 mr-3"></i>
+    </a>
+    <h5 class="navbar-brand p-0 pt-1 font-weight-bold">Almacanela </h5>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-nabvar"
+    aria-controls="menu-nabvar" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-ellipsis-v fa-lg"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="menu-nabvar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link waves-effect waves-light" routerLink='/home'>Home</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link waves-effect waves-light" routerLink='/example'>Features</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link waves-effect waves-light" routerLink='/example'>Pricing</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu dropdown-info" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item waves-effect waves-light" routerLink=''>Action</a>
+          <a class="dropdown-item waves-effect waves-light" routerLink=''>Another action</a>
+          <a class="dropdown-item waves-effect waves-light" routerLink=''>Something else here</a>
+        </div>
+      </li>
+    </ul>
+    <div class="d-flex justify-content-between">
+      <div class="text-right mx-2">
+        <h6 class="small font-weight-bold m-0 p-0">{{modulos.principal.Usuario.idPersona.nombres}}</h6>
+        <h6 class="m-0 p-0 small"><span class="spinner-grow spinner-grow-sm text-success" role="status"
+            aria-hidden="true"></span> {{modulos.principal.Usuario.idRol.nombre}}</h6>
+      </div>
+      <a data-toggle="modal" data-target="#modalUsuario"><i class="far fa-user-circle fa-2x"></i></a>
+    </div>
+  </div>
+</nav>
+<div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h4 class="font-weight-bold">{{modulos.principal.Usuario.idPersona.nombres}}</h4>
+          <a data-dismiss="modal" class="fas fa-times-circle close purple-ic"></a>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h2>{{modulos.principal.Usuario.idPersona.nombres}}</h2>
+              <button (click)="cerrarSesion()" class="btn btn-danger">Cerrar sesión</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

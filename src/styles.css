@@ -1,1 +1,115 @@
 /* You can add global styles to this file, and also import other style files */
+
+.sidebar {
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 20px;
+}
+
+.sidebar a {
+  padding: 5px 5px 5px 32px;
+  text-decoration: none;
+  display: block;
+  transition: 0.4s;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.limpiar-menu {
+  display: none;
+}
+
+.poblar-menu{
+  display: block;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.menu-inactivo{
+  -webkit-transition: height 1s, background 1s;
+    -moz-transition: height 1s, background 1s;
+    -o-transition: height 1s, background 1s;
+    transition: height 1s, background 1s;
+}
+
+.menu-activo{
+  -webkit-transition: height 1s, background 1s;
+    -moz-transition: height 1s, background 1s;
+    -o-transition: height 1s, background 1s;
+    transition: height 1s, background 1s;
+}
+
+
+@media only screen and (max-width: 991px) {
+
+  /* MENOR DE 991px */
+
+  #botonMenu{
+    display: block;
+  }
+
+  .menu-inactivo {
+    height: 0vh;
+  }
+
+  .menu-activo {
+    display: block;
+    height: 87vh;
+    margin-bottom: 15px;
+  }
+
+}
+
+@media only screen and (min-width: 991px) {
+
+/* MAYOR A 992px */
+
+.menu-activo{
+  display: block;
+  height: 87vh;
+}
+
+  .limpiar-menu {
+    display: block;
+    height: 87vh;
+  }
+
+  #botonMenu{
+    display: none;
+  }
+
+}
+
+
+
+/* ------------------------------------- */
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #9933CC;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6a1b9a;
+}
+
+
+.list-group-item:hover{
+  color: #6a1b9a;
+}

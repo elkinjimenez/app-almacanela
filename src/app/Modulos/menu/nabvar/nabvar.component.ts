@@ -23,7 +23,7 @@ export class NabvarComponent implements OnInit {
     const usuarioL = this.persistencia.get('usuarioL', StorageType.SESSION);
     if (usuarioL !== undefined) {
       this.modulos.principal.Usuario = usuarioL;
-      console.log('USUARIOOO', usuarioL);
+      // console.log('USUARIOOO', usuarioL);
     } else {
       this.modulos.principal.logueado = false;
     }

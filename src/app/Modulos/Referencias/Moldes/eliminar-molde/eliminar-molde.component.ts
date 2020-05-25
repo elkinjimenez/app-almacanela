@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-eliminar-molde',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./eliminar-molde.component.css']
 })
 export class EliminarMoldeComponent implements OnInit {
+
+  @Input() nombre = '';
 
   constructor() { }
 

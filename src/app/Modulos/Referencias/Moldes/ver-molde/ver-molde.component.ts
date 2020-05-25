@@ -4,6 +4,9 @@ import { PersistenceService, StorageType } from 'angular-persistence';
 import { Molde } from 'src/app/Modelos/Molde/molde';
 import { MoldeService } from 'src/app/Servicios/molde.service';
 
+declare var jQuery: any;
+declare var $: any;
+
 @Component({
   selector: 'app-ver-molde',
   templateUrl: './ver-molde.component.html',
@@ -25,11 +28,19 @@ export class VerMoldeComponent implements OnInit {
   }
 
   buscarMolde() {
-    this.servicioMolde.getBuscarMolde().subscribe(
+    this.servicioMolde.getBuscarMolde(this.Molde.idMolde).subscribe(
       data => {
         this.Molde = data as Molde;
       }
     );
+  }
+
+  inactivarMolde() {
+    $('#inactivarMolde').modal('show');
+  }
+
+  editarMolde() {
+    $('#editarModel').modal('show');
   }
 
 }

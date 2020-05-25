@@ -23,8 +23,8 @@ export class MoldeService {
     return this.http.post(URL, body);
   }
 
-  getBuscarMolde() {
-    const URL = this.dataSource.server + '/wsalmacanela/webresources/entity.molde/molde?id=4';
+  getBuscarMolde(id: number) {
+    const URL = this.dataSource.server + '/wsalmacanela/webresources/entity.molde/molde?id=' + id;
     return this.http.get(URL);
   }
 

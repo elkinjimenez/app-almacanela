@@ -59,6 +59,7 @@ export class ListarMoldesComponent implements OnInit {
   seleccionarMolde(molde: Molde) {
     this.persistencia.set('MoldeSeleccionado', molde, { type: StorageType.SESSION });
     this.modulos.volverAtras.ruta = '/referencia/moldes';
+    this.persistencia.set('rutaAtras', this.modulos.volverAtras.ruta, { type: StorageType.SESSION });
     this.router.navigate(['referencia/molde']);
   }
 

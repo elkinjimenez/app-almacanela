@@ -4,13 +4,13 @@ import { Parte } from '../parte';
 import { Pieza } from '../pieza';
 
 export interface Molde {
-  idMolde: string;
+  idMolde: number;
   codigo: string;
   nombre: string;
   estado: string;
   imagen: string;
   consumo: number;
-  deperdicio: number;
+  desperdicio: number;
   idLinea: Linea;
   idParte: Parte;
   idComponente: Componente;

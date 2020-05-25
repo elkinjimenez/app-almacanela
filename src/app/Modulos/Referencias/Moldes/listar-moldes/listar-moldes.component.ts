@@ -2,6 +2,8 @@ import { Component, OnInit, Host, Optional } from '@angular/core';
 import { MoldeService } from 'src/app/Servicios/molde.service';
 import { Molde } from 'src/app/Modelos/Molde/molde';
 import { ModulosComponent } from '../../../menu/modulos/modulos.component';
+import { Router } from '@angular/router';
+import { PersistenceService, StorageType } from 'angular-persistence';
 
 declare var jQuery: any;
 declare var $: any;
@@ -13,11 +15,14 @@ declare var $: any;
 })
 export class ListarMoldesComponent implements OnInit {
 
+  ruta = '';
   estado = 0;
   listadoMoldes: Molde[];
 
   constructor(
     @Optional() public modulos: ModulosComponent,
+    private router: Router,
+    private persistencia: PersistenceService,
     private servicioMolde: MoldeService,
   ) { }
 
@@ -37,8 +42,24 @@ export class ListarMoldesComponent implements OnInit {
         }
       }, error => {
         console.log('Error moldes: ', error);
+        this.estado = 2;
+        setTimeout(() => {
+          this.modulos.principal.notifica = {
+            mensaje: 'No se logró trae la lista de moldes, Por favor recarga la aplicación.',
+            color: 'danger-color',
+            nombre: '¡Recargar página!',
+            estado: true
+          };
+          $('#modalNotifica').modal('show');
+        }, 600);
       }
     );
+  }
+
+  seleccionarMolde(molde: Molde) {
+    this.persistencia.set('MoldeSeleccionado', molde, { type: StorageType.SESSION });
+    this.modulos.volverAtras.ruta = '/referencia/moldes';
+    this.router.navigate(['referencia/molde']);
   }
 
 }

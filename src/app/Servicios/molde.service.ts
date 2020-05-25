@@ -14,13 +14,18 @@ export class MoldeService {
   ) { }
 
   getMoldes() {
-    const URL = this.dataSource.server + '/wsalmacanela/webresources/entity.molde';
+    const URL = this.dataSource.server + '/wsalmacanela/webresources/entity.molde/listado';
     return this.http.get(URL);
   }
 
   postMoldeCrear(body: MoldeCrear) {
     const URL = this.dataSource.server + '/wsalmacanela/webresources/entity.molde/crear';
     return this.http.post(URL, body);
+  }
+
+  getBuscarMolde() {
+    const URL = this.dataSource.server + '/wsalmacanela/webresources/entity.molde/molde?id=4';
+    return this.http.get(URL);
   }
 
 }

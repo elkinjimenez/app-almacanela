@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ModulosComponent } from 'src/app/Modulos/menu/modulos/modulos.component';
 
 @Component({
   selector: 'app-volver',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VolverComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public modulos: ModulosComponent,
+  ) { }
 
   ngOnInit(): void {
   }

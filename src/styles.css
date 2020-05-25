@@ -109,9 +109,13 @@
   background: #6a1b9a;
 }
 
+.hoverable {
+  background-color: #eeeeee;
+}
 
-.list-group-item:hover{
-  color: #6a1b9a;
+.hoverable:hover{
+  color: white;
+  background-color: #9933CC;
 }
 
 #modalNotifica {

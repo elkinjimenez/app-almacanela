@@ -11,7 +11,7 @@ declare var $: any;
 })
 export class ModulosComponent implements OnInit {
 
-  volverAtrás = { estado: false, ruta: '' };
+  public volverAtras = { estado: false, ruta: '/' };
   menu = { estado: true, clase: 'menu-activo', campos: 'poblar-menu' };
 
   constructor(

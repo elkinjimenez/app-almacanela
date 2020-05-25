@@ -10,6 +10,7 @@ import { Pieza } from 'src/app/Modelos/pieza';
 import { ListarMoldesComponent } from '../listar-moldes/listar-moldes.component';
 import { MoldeCrear } from 'src/app/Modelos/Molde/molde-crear';
 import { MoldeService } from 'src/app/Servicios/molde.service';
+import { ResponseGeneral } from 'src/app/Modelos/response-general';
 
 declare var jQuery: any;
 declare var $: any;
@@ -21,12 +22,12 @@ declare var $: any;
 })
 export class CrearMoldeComponent implements OnInit {
 
-  imageSrc = '';
-
+  // DE LOS SERVICIOS
   listadoLineas = [] as Linea[];
   listadoPartes = [] as Parte[];
   listadoComponentes = [] as Componente[];
   listadoPiezas = [] as Pieza[];
+  responseGeneral: ResponseGeneral;
 
   datos = { nombre: '', idLinea: 0, idParte: 0, idComponente: 0, idPieza: 0, consumo: null, desperdicio: null, imagen: null };
   botonCrear = { estado: false, texto: 'Crear molde' };
@@ -41,7 +42,9 @@ export class CrearMoldeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.consumirLineas();
+    setTimeout(() => {
+      this.consumirLineas();
+    }, 1000);
   }
 
   consumirLineas() {
@@ -198,9 +201,8 @@ export class CrearMoldeComponent implements OnInit {
         nombre: '¡Solo imágenes!',
         estado: true
       };
-      this.datos.imagen = null;
+      this.datos.imagen = '';
       $('#modalNotifica').modal('show');
-      this.imageSrc = '';
     } else {
       const reader = new FileReader();
       reader.onload = this.manejarImagenCargada.bind(this);
@@ -210,7 +212,7 @@ export class CrearMoldeComponent implements OnInit {
 
   manejarImagenCargada(e) {
     const reader = e.target;
-    this.imageSrc = reader.result;
+    this.datos.imagen = reader.result;
   }
 
   crearMoldeListo() {
@@ -221,11 +223,10 @@ export class CrearMoldeComponent implements OnInit {
       nombre: '¡Creando molde!',
       estado: false
     };
-    this.datos.imagen = null;
     $('#modalNotifica').modal('show');
     const body = {
       nombre: this.datos.nombre,
-      imagen: this.imageSrc,
+      imagen: this.datos.imagen,
       linea: this.datos.idLinea,
       parte: this.datos.idParte,
       componente: this.datos.idComponente,
@@ -236,10 +237,44 @@ export class CrearMoldeComponent implements OnInit {
     this.moldeServicio.postMoldeCrear(body).subscribe(
       data => {
         console.log('Crear molde: ', data);
+        this.responseGeneral = data as ResponseGeneral;
+        $('#modalNotifica').modal('hide');
+        if (this.responseGeneral.codigo === '00') {
+          this.listaMoldes.consumirListaMoldes();
+          setTimeout(() => {
+            this.listaMoldes.modulos.principal.notifica = {
+              mensaje: this.responseGeneral.descripcion,
+              color: 'success-color',
+              nombre: this.responseGeneral.nombre,
+              estado: true
+            };
+            $('#modalNotifica').modal('show');
+          }, 600);
+        } else {
+          setTimeout(() => {
+            this.listaMoldes.modulos.principal.notifica = {
+              mensaje: this.responseGeneral.descripcion,
+              color: 'danger-color',
+              nombre: this.responseGeneral.nombre,
+              estado: true
+            };
+            $('#modalNotifica').modal('show');
+          }, 600);
+        }
       }, error => {
         console.log('Error al crear molde: ', error);
+        $('#modalNotifica').modal('hide');
+        setTimeout(() => {
+          this.listaMoldes.modulos.principal.notifica = {
+            mensaje: 'No se logró crear el molde satisfactoriamente, por favor intenta de nuevo.',
+            color: 'danger-color',
+            nombre: '¡Nuevo intento!',
+            estado: true
+          };
+          $('#modalNotifica').modal('show');
+        }, 600);
       }
-    )
+    );
   }
 
 }

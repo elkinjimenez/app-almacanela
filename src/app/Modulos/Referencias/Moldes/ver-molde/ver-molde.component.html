@@ -1,1 +1,25 @@
-<p>ver-molde works!</p>
+<div class="container-fluid">
+  <div class="d-flex justify-content-between">
+    <h2 class="font-weight-bold m-0">
+      <app-volver></app-volver> {{Molde.nombre}}
+    </h2>
+  </div>
+</div>
+<div class="overflow-auto" style="height:87%;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-6">
+        <div class="card grey lighten-2 my-2">
+          <div class="card-body text-center">
+            <img [src]="Molde.imagen" style="max-height: 250px;" *ngIf="Molde.imagen"
+              class="img-fluid rounded z-depth-1 mb-3" alt="Molde">
+            <div class="d-flex justify-content-between">
+              <h5>Código:</h5>
+              <h3 class="font-weight-bold">{{Molde.codigo}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

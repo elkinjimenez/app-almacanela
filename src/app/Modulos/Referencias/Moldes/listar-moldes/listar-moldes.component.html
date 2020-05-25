@@ -1,34 +1,31 @@
-<div class="d-flex justify-content-between align-items-center mb-2">
-  <h2 class="font-weight-bold m-0">
-    <app-volver></app-volver> Moldes
-  </h2>
-  <button data-toggle="modal" data-target="#nuevoModel" class="btn btn-purple font-weight-bold"><i
-      class="fas fa-plus fa-lg"></i> Nuevo molde</button>
+<div class="container-fluid">
+  <div class="d-flex justify-content-between">
+    <h2 class="font-weight-bold m-0">
+      <app-volver></app-volver> Moldes
+    </h2>
+    <button data-toggle="modal" data-target="#nuevoModel" class="btn btn-purple font-weight-bold mx-0"><i
+        class="fas fa-plus fa-lg"></i> Nuevo molde</button>
+  </div>
 </div>
 <div class="overflow-auto" style="height:87%;">
   <app-datos-vacios *ngIf="estado===2" [icono]="'far fa-bell'" [mensaje]="'moldes'"></app-datos-vacios>
   <app-buscando-datos *ngIf="estado===0"></app-buscando-datos>
-  <div *ngIf="estado===1">
-    <ul class="list-group list-group-flush">
-      <li *ngFor="let m of listadoMoldes" class="list-group-item border-0 rounded-lg list-group-item-action">
-        <div class="container-fluid">
-          <div class="row d-flex align-items-center">
-            <div class="col-lg-1">
-              <img src="https://i.pinimg.com/originals/78/74/9a/78749ac5ac45456fc0b8be24cab59c49.jpg"
-                class="img-fluid rounded z-depth-1" alt="Molde">
-            </div>
-            <div class="col-lg-5">
-              <small>Nombre:</small>
-              <h5 class="m-0">{{m.nombre}}</h5>
-            </div>
-            <div class="col-lg-5">
-              <small>Código:</small>
-              <h5 class="m-0">{{m.codigo}}</h5>
-            </div>
+  <div class="container-fluid" *ngIf="estado===1">
+    <a (click)="seleccionarMolde(m)" *ngFor="let m of listadoMoldes">
+      <div class="my-2 rounded-lg p-3 hoverable">
+        <div class="row d-flex align-items-center">
+          <div class="col-2 text-center">
+            <img [src]="m.imagen" style="max-height: 80px;" *ngIf="m.imagen" class="img-fluid rounded z-depth-1"
+              alt="Molde">
+            <i class="far fa-clone fa-3x" *ngIf="!m.imagen"></i>
+          </div>
+          <div class="col-5">
+            <h4 class="font-weight-bold m-0 h4">{{m.nombre}}</h4>
+            <h6 class="m-0">Cod: {{m.codigo}}</h6>
           </div>
         </div>
-      </li>
-    </ul>
+      </div>
+    </a>
   </div>
 </div>
 <app-crear-molde></app-crear-molde>

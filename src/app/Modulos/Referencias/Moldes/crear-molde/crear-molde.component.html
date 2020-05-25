@@ -75,9 +75,9 @@
                   <label for="imagenACargar" style="height: 250px;"
                     class="mt-2 px-2 grey lighten-2 d-flex justify-content-center align-items-center rounded animated fadeIn">
                     <div class="text-center">
-                      <img *ngIf="imageSrc" style="max-height: 220px;"
-                        class="img-fluid rounded z-depth-1-half animated fadeIn" [src]="imageSrc" />
-                      <h5 class="font-weight-bold grey-ic" *ngIf="!imageSrc">Vista previa...</h5>
+                      <img *ngIf="datos.imagen" style="max-height: 220px;"
+                        class="img-fluid rounded z-depth-1-half animated fadeIn" [src]="datos.imagen" />
+                      <h5 class="font-weight-bold grey-ic" *ngIf="!datos.imagen">Vista previa...</h5>
                     </div>
                   </label>
                   <div class="custom-file">
@@ -93,7 +93,7 @@
                 class="btn btn-block btn-outline-secondary btn-lg font-weight-bold">Cancelar</button>
             </div>
             <div class="col-6 mt-2">
-              <button (click)="crearMoldeListo()" [disabled]="botonCrear.estado"
+              <button (click)="crearMoldeListo()" [disabled]="!botonCrear.estado"
                 class="btn btn-block btn-purple btn-lg font-weight-bold">{{botonCrear.texto}}</button>
             </div>
           </div>

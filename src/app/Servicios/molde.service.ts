@@ -28,4 +28,9 @@ export class MoldeService {
     return this.http.get(URL);
   }
 
+  putCambioEstadoMolde(id: number, estado: string) {
+    const URL = this.dataSource.server + '/wsalmacanela/webresources/entity.molde/cambioEstado?id=' + id + '&estado=' + estado;
+    return this.http.put(URL, null);
+  }
+
 }

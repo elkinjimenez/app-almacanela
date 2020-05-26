@@ -32,7 +32,10 @@
                 <button (click)="editarMolde()" class="btn btn-purple font-weight-bold btn-block">Editar Molde</button>
               </div>
               <div class="col-6">
-                <button (click)="inactivarMolde()" class="btn btn-grey font-weight-bold btn-block">Inactivar</button>
+                <button *ngIf="Molde.estado==='Activo'" (click)="inactivarMolde()"
+                  class="btn btn-grey font-weight-bold btn-block">Inactivar</button>
+                <button *ngIf="Molde.estado!=='Activo'" (click)="inactivarMolde()"
+                  class="btn btn-outline-purple font-weight-bold btn-block">Activar</button>
               </div>
             </div>
           </div>
@@ -72,5 +75,5 @@
     </div>
   </div>
 </div>
-<app-eliminar-molde [nombre]="Molde.nombre"></app-eliminar-molde>
+<app-eliminar-molde [Molde]="Molde"></app-eliminar-molde>
 <app-editar-molde></app-editar-molde>

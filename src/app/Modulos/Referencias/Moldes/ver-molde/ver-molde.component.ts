@@ -1,8 +1,8 @@
 import { Component, OnInit, Optional } from '@angular/core';
-import { ListarMoldesComponent } from '../listar-moldes/listar-moldes.component';
 import { PersistenceService, StorageType } from 'angular-persistence';
 import { Molde } from 'src/app/Modelos/Molde/molde';
 import { MoldeService } from 'src/app/Servicios/molde.service';
+import { ModulosComponent } from 'src/app/Modulos/menu/modulos/modulos.component';
 
 declare var jQuery: any;
 declare var $: any;
@@ -17,7 +17,7 @@ export class VerMoldeComponent implements OnInit {
   Molde: Molde;
 
   constructor(
-    @Optional() public listaMoldes: ListarMoldesComponent,
+    @Optional() public modulos: ModulosComponent,
     private servicioMolde: MoldeService,
     private persistencia: PersistenceService,
   ) { }
@@ -30,7 +30,9 @@ export class VerMoldeComponent implements OnInit {
   buscarMolde() {
     this.servicioMolde.getBuscarMolde(this.Molde.idMolde).subscribe(
       data => {
+        console.log('Molde:', data);
         this.Molde = data as Molde;
+        this.persistencia.set('MoldeSeleccionado', this.Molde, { type: StorageType.SESSION });
       }
     );
   }

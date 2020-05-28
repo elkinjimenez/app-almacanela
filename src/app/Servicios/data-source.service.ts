@@ -8,6 +8,6 @@ export class DataSourceService {
   server = 'https://almacanelalean.com';
 
   constructor() {
-    // this.server = 'http://localhost:8080';
+    this.server = 'http://localhost:8080';
   }
 }

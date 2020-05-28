@@ -6,7 +6,6 @@ import { Pieza } from '../pieza';
 export interface Molde {
   idMolde: number;
   codigo: string;
-  nombre: string;
   estado: string;
   imagen: string;
   consumo: number;

@@ -29,7 +29,7 @@ export class CrearMoldeComponent implements OnInit {
   listadoPiezas = [] as Pieza[];
   responseGeneral: ResponseGeneral;
 
-  datos = { nombre: '', idLinea: 0, idParte: 0, idComponente: 0, idPieza: 0, consumo: null, desperdicio: null, imagen: null };
+  datos = { idLinea: 0, idParte: 0, idComponente: 0, idPieza: 0, consumo: null, desperdicio: null, imagen: null };
   botonCrear = { estado: false, texto: 'Crear molde' };
 
   constructor(
@@ -178,7 +178,6 @@ export class CrearMoldeComponent implements OnInit {
 
   validarEnvio() {
     if (
-      this.datos.nombre !== '' &&
       this.datos.idLinea !== 0 &&
       this.datos.idParte !== 0 &&
       this.datos.idComponente !== 0 &&
@@ -225,7 +224,6 @@ export class CrearMoldeComponent implements OnInit {
     };
     $('#modalNotifica').modal('show');
     const body = {
-      nombre: this.datos.nombre,
       imagen: this.datos.imagen,
       linea: this.datos.idLinea,
       parte: this.datos.idParte,

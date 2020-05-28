@@ -11,13 +11,6 @@
           <div class="row">
             <div class="col-xl-6">
               <div class="row">
-                <div class="col-xl-12">
-                  <div class="md-form md-outline my-2">
-                    <input (keyup)="validarEnvio()" [(ngModel)]="datos.nombre" type="text" id="nombreModal"
-                      class="form-control">
-                    <label for="nombreModal">Nombre del molde</label>
-                  </div>
-                </div>
                 <div class="col-xl-12 mb-2">
                   <label for="listaLineas">Seleccione una línea</label>
                   <select (change)="llenarPartes()" [(ngModel)]="datos.idLinea" [disabled]="listadoLineas.length===0"
@@ -52,11 +45,6 @@
                     <option *ngFor="let p of listadoPiezas" value={{p.idPieza}}>{{p.nombre}}</option>
                   </select>
                 </div>
-
-              </div>
-            </div>
-            <div class="col-xl-6">
-              <div class="row">
                 <div class="col-xl-6">
                   <div class="md-form md-outline my-2">
                     <input (keyup)="validarEnvio()" [(ngModel)]="datos.consumo" type="number" step="any" id="consumo"
@@ -71,20 +59,25 @@
                     <label for="desperdicio">Desperdicio</label>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <div class="row">
                 <div class="col-12">
-                  <label for="imagenACargar" style="height: 250px;"
-                    class="mt-2 px-2 grey lighten-2 d-flex justify-content-center align-items-center rounded animated fadeIn">
-                    <div class="text-center">
-                      <img *ngIf="datos.imagen" style="max-height: 220px;"
-                        class="img-fluid rounded z-depth-1-half animated fadeIn" [src]="datos.imagen" />
-                      <h5 class="font-weight-bold grey-ic" *ngIf="!datos.imagen">Vista previa...</h5>
-                    </div>
-                  </label>
+                  <label for="imagenACargar">Agrega una imagen del molde</label>
                   <div class="custom-file">
                     <input [(ngModel)]="datos.imagen" accept="image/*" (change)="capturarImagen($event)" type="file"
                       class="custom-file-input" id="imagenACargar" lang="es">
                     <label class="custom-file-label" for="imagenACargar">Selecciona una imagen</label>
                   </div>
+                  <label for="imagenACargar" style="height: 280px;"
+                    class="mt-2 px-2 grey lighten-2 d-flex justify-content-center align-items-center rounded animated fadeIn">
+                    <div class="text-center">
+                      <img *ngIf="datos.imagen" style="max-height: 250px;"
+                        class="img-fluid rounded z-depth-1-half animated fadeIn" [src]="datos.imagen" />
+                      <h5 class="font-weight-bold grey-ic" *ngIf="!datos.imagen">Vista previa...</h5>
+                    </div>
+                  </label>
                 </div>
               </div>
             </div>

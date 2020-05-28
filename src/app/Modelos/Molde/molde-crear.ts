@@ -1,5 +1,4 @@
 export interface MoldeCrear {
-  nombre: string;
   linea: number;
   parte: number;
   componente: number;

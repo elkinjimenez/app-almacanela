@@ -46,14 +46,23 @@
     <div class="modal-content">
       <div class="modal-body">
         <div class="modal-header">
-          <h4 class="font-weight-bold">{{modulos.principal.Usuario.idPersona.nombres}}</h4>
+          <h4 class="font-weight-bold">Usuario actual</h4>
           <a data-dismiss="modal" class="fas fa-times-circle close purple-ic"></a>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col-12 text-center">
-              <h2>{{modulos.principal.Usuario.idPersona.nombres}}</h2>
-              <button (click)="cerrarSesion()" class="btn btn-danger">Cerrar sesión</button>
+              <i class="far purple-ic fa-user-circle fa-10x"></i>
+              <h6 class="font-weight-bold purple-text mt-4">{{modulos.principal.Usuario.idRol.nombre}}</h6>
+              <h4 class="font-weight-bold">{{modulos.principal.Usuario.idPersona.nombres}}
+                {{modulos.principal.Usuario.idPersona.apellidos}}</h4>
+              <h5 class="mb-4">{{modulos.principal.Usuario.idPersona.ciudad}}</h5>
+            </div>
+            <div class="col-6">
+              <button data-dismiss="modal" class="btn btn-outline-purple font-weight-bold btn-block">Cancelar</button>
+            </div>
+            <div class="col-6">
+              <button (click)="cerrarSesion()" class="btn btn-purple font-weight-bold btn-block">Cerrar sesión</button>
             </div>
           </div>
         </div>

@@ -13,6 +13,7 @@ import { MoldeService } from 'src/app/Servicios/molde.service';
 import { MoldeCrear } from 'src/app/Modelos/Molde/molde-crear';
 import { Molde } from 'src/app/Modelos/Molde/molde';
 import { VerMoldeComponent } from '../ver-molde/ver-molde.component';
+import { PersistenceService, StorageType } from 'angular-persistence';
 
 declare var jQuery: any;
 declare var $: any;
@@ -41,7 +42,8 @@ export class EditarMoldeComponent implements OnInit {
     private parteServicio: ParteService,
     private componenteServicio: ComponenteService,
     private piezaServicio: PiezaService,
-    private moldeServicio: MoldeService
+    private moldeServicio: MoldeService,
+    private persistencia: PersistenceService,
   ) { }
 
   ngOnInit() {
@@ -238,7 +240,8 @@ export class EditarMoldeComponent implements OnInit {
         this.responseGeneral = data as ResponseGeneral;
         $('#modalNotifica').modal('hide');
         if (this.responseGeneral.codigo === '00') {
-          this.verMolde.buscarMolde();
+          // this.verMolde.buscarMolde();
+          this.persistencia.set('MoldeSeleccionado', this.Molde, { type: StorageType.SESSION });
           setTimeout(() => {
             this.verMolde.modulos.principal.notifica = {
               mensaje: this.responseGeneral.descripcion,

@@ -9,6 +9,5 @@ export class DataSourceService {
 
   constructor() {
     // this.server = 'http://localhost:8080';
-    this.server = 'http://localhost';
   }
 }

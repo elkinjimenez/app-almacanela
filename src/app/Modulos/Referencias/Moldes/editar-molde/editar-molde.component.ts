@@ -1,4 +1,4 @@
-import { Component, OnInit, Host, Optional } from '@angular/core';
+import { Component, OnInit, Host, Optional, Input } from '@angular/core';
 import { Linea } from 'src/app/Modelos/linea';
 import { Parte } from 'src/app/Modelos/parte';
 import { Componente } from 'src/app/Modelos/componente';
@@ -11,6 +11,7 @@ import { ComponenteService } from 'src/app/Servicios/componente.service';
 import { PiezaService } from 'src/app/Servicios/pieza.service';
 import { MoldeService } from 'src/app/Servicios/molde.service';
 import { MoldeCrear } from 'src/app/Modelos/Molde/molde-crear';
+import { Molde } from 'src/app/Modelos/Molde/molde';
 
 declare var jQuery: any;
 declare var $: any;
@@ -29,8 +30,10 @@ export class EditarMoldeComponent implements OnInit {
   listadoPiezas = [] as Pieza[];
   responseGeneral: ResponseGeneral;
 
+  @Input() Molde = {} as Molde;
+
   datos = { nombre: '', idLinea: 0, idParte: 0, idComponente: 0, idPieza: 0, consumo: null, desperdicio: null, imagen: null };
-  botonCrear = { estado: false, texto: 'Crear molde' };
+  botonActualizar = { estado: false, texto: 'Actualizar molde' };
 
   constructor(
     @Host() @Optional() public listaMoldes: ListarMoldesComponent,
@@ -186,9 +189,9 @@ export class EditarMoldeComponent implements OnInit {
       this.datos.consumo !== null &&
       this.datos.desperdicio !== null
     ) {
-      this.botonCrear.estado = true;
+      this.botonActualizar.estado = true;
     } else {
-      this.botonCrear.estado = false;
+      this.botonActualizar.estado = false;
     }
   }
 

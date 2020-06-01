@@ -5,6 +5,7 @@ import { Pieza } from '../pieza';
 
 export interface Molde {
   idMolde: number;
+  item: string;
   codigo: string;
   estado: string;
   imagen: string;

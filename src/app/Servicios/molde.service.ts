@@ -33,4 +33,8 @@ export class MoldeService {
     return this.http.put(URL, null);
   }
 
+  putMoldeEditar(body: MoldeCrear) {
+    const URL = this.dataSource.server + '/wsalmacanela/webresources/entity.molde/editar';
+    return this.http.put(URL, body);
+  }
 }

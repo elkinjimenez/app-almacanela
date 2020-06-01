@@ -1,4 +1,5 @@
 export interface MoldeCrear {
+  idMolde?: number;
   linea: number;
   parte: number;
   componente: number;

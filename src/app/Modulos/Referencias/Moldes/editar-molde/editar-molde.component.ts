@@ -236,27 +236,31 @@ export class EditarMoldeComponent implements OnInit {
     } as MoldeCrear;
     this.moldeServicio.putMoldeEditar(body).subscribe(
       data => {
-        console.log('Actualizar molde: ', data);
-        this.responseGeneral = data as ResponseGeneral;
-        $('#modalNotifica').modal('hide');
-        if (this.responseGeneral.codigo === '00') {
-          // this.verMolde.buscarMolde();
-          this.persistencia.set('MoldeSeleccionado', this.Molde, { type: StorageType.SESSION });
+        try {
+          console.log('Actualizar molde: ', data);
+          this.Molde = data as Molde;
+          $('#modalNotifica').modal('hide');
+          this.moldeServicio.getBuscarMolde(this.Molde.idMolde).subscribe(
+            dato => {
+              console.log('Molde:', dato);
+            }
+          );
           setTimeout(() => {
+            sessionStorage.setItem('MoldeSeleccionado', JSON.stringify(this.Molde));
             this.verMolde.modulos.principal.notifica = {
-              mensaje: this.responseGeneral.descripcion,
+              mensaje: 'Molde actualizado correctamente.',
               color: 'success-color',
-              nombre: this.responseGeneral.nombre,
+              nombre: '¡Molde actualizado!',
               estado: true
             };
             $('#modalNotifica').modal('show');
           }, 600);
-        } else {
+        } catch (e) {
           setTimeout(() => {
             this.verMolde.modulos.principal.notifica = {
-              mensaje: this.responseGeneral.descripcion,
+              mensaje: 'Molde no actualizado correctamente. Por favor intenta de nuevo.',
               color: 'danger-color',
-              nombre: this.responseGeneral.nombre,
+              nombre: '¡Molde no actualizado!',
               estado: true
             };
             $('#modalNotifica').modal('show');

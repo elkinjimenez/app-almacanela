@@ -23,7 +23,7 @@ export class VerMoldeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.Molde = this.persistencia.get('MoldeSeleccionado', StorageType.SESSION);
+    this.Molde = JSON.parse(sessionStorage.getItem('MoldeSeleccionado')) as Molde;
     this.buscarMolde();
   }
 
@@ -32,7 +32,7 @@ export class VerMoldeComponent implements OnInit {
       data => {
         console.log('Molde:', data);
         this.Molde = data as Molde;
-        this.persistencia.set('MoldeSeleccionado', this.Molde, { type: StorageType.SESSION });
+        sessionStorage.setItem('MoldeSeleccionado', JSON.stringify(this.Molde));
       }
     );
   }

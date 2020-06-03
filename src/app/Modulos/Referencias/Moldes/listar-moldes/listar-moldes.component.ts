@@ -18,6 +18,7 @@ export class ListarMoldesComponent implements OnInit {
   ruta = '';
   estado = 0;
   listadoMoldes: Molde[];
+  Molde: Molde;
 
   constructor(
     @Optional() public modulos: ModulosComponent,
@@ -57,7 +58,8 @@ export class ListarMoldesComponent implements OnInit {
   }
 
   seleccionarMolde(molde: Molde) {
-    this.persistencia.set('MoldeSeleccionado', molde, { type: StorageType.SESSION });
+    this.Molde = molde;
+    sessionStorage.setItem('MoldeSeleccionado', JSON.stringify(this.Molde));
     this.modulos.volverAtras.ruta = '/moldesActivos';
     this.persistencia.set('rutaAtras', this.modulos.volverAtras.ruta, { type: StorageType.SESSION });
     this.router.navigate(['/molde']);

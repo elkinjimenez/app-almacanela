@@ -42,16 +42,6 @@ export class LogueoComponent implements OnInit {
         this.usuarios = data as Usuario[];
         if (this.usuarios.length > 0) {
           $('#modalNotifica').modal('hide');
-          setTimeout(() => {
-            this.pages.init.Usuario = this.usuarios[0];
-            this.pages.init.notifica = {
-              color: 'success-color',
-              mensaje: 'Hola ' + this.pages.init.Usuario.idPersona.nombres + '.',
-              nombre: '¡Bienvenido!',
-              estado: true
-            };
-            $('#modalNotifica').modal('show');
-          }, 600);
           this.pages.init.logueado = true;
           this.persistencia.set('logueado', this.pages.init.logueado, { type: StorageType.SESSION });
           this.persistencia.set('usuarioL', this.usuarios[0], { type: StorageType.SESSION });

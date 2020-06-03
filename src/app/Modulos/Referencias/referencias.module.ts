@@ -11,6 +11,7 @@ import { CrearMoldeComponent } from './Moldes/crear-molde/crear-molde.component'
 import { ComponentesModule } from 'src/app/Compartidos/Componentes/componentes.module';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/Router/app-routing.module';
+import { HomeMoldesComponent } from './Moldes/home-moldes/home-moldes.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AppRoutingModule } from 'src/app/Router/app-routing.module';
     VerMoldeComponent,
     EditarMoldeComponent,
     EliminarMoldeComponent,
-    CrearMoldeComponent
+    CrearMoldeComponent,
+    HomeMoldesComponent
   ],
   imports: [
     CommonModule,

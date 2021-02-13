@@ -16,7 +16,7 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     AngularMaterialModule,
   ],
   providers: [],

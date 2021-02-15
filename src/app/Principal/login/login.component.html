@@ -14,15 +14,16 @@
                 <div class="col-12">
                   <h6 class="font-weight-bold"><i class="fas fa-angle-double-right animated fadeInLeft infinite"></i>
                     Digite sus datos de acceso</h6>
-                    <span>(Aún está en proceso de reforma...)</span>
                   <div class="md-form md-outline form-lg input-with-pre-icon">
                     <i class="far fa-user-circle input-prefix"></i>
-                    <input disabled type="text" id="usuario" name="usuario" class="form-control form-control-lg">
+                    <input [(ngModel)]="inicioSesion.usuario" type="text" id="usuario" name="usuario"
+                      class="form-control form-control-lg">
                     <label for="usuario">Digitar usuario</label>
                   </div>
                   <div class="md-form md-outline form-lg input-with-pre-icon">
                     <i class="fas fa-key input-prefix"></i>
-                    <input disabled type="password" id="clave" name="clave" class="form-control form-control-lg">
+                    <input [(ngModel)]="inicioSesion.clave" type="password" id="clave" name="clave"
+                      class="form-control form-control-lg">
                     <label for="clave"> Digitar contraseña</label>
                   </div>
                 </div>
@@ -30,7 +31,9 @@
                   <button data-dismiss="modal" class="btn btn-block btn-outline-secondary btn-lg px-0">Cancelar</button>
                 </div>
                 <div class="col-6">
-                  <button disabled class="btn btn-block btn-purple btn-lg px-0">Ingresar</button>
+                  <button data-dismiss="modal" (click)="iniciarSesion()"
+                    [disabled]="!(inicioSesion.usuario != '' && inicioSesion.clave != '')"
+                    class="btn btn-block btn-purple btn-lg px-0">Ingresar</button>
                 </div>
               </div>
             </div>

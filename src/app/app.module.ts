@@ -7,6 +7,8 @@ import { AppComponent } from './root/app.component';
 import { PrincipalModule } from './Principal/principal.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './Shared/shared.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { SharedModule } from './Shared/shared.module';
     AngularMaterialModule,
     HttpClientModule,
     PrincipalModule,
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

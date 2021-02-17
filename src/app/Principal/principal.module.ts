@@ -6,13 +6,17 @@ import { LoginComponent } from './login/login.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { FormsModule } from '@angular/forms';
+import { InicioComponent } from './inicio/inicio.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     LandingPageComponent,
     LoginComponent,
     ContactoComponent,
-    QuienesSomosComponent
+    QuienesSomosComponent,
+    InicioComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +24,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports: [
-    LandingPageComponent
+    InicioComponent
   ]
 })
 export class PrincipalModule { }

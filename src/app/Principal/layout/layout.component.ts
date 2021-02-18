@@ -33,7 +33,7 @@ export class LayoutComponent implements OnInit {
           habilitar: true,
           texto: 'Ir al dashboard'
         }
-      });
+      }, false);
     }
   }
 }

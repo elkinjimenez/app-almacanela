@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       titulo: 'Inicio de sesión.',
       btnUno: {},
       btnDos: {}
-    });
+    }, false);
     this.logueoServicio.inicioSesion(this.inicioSesion.usuario, this.inicioSesion.clave).subscribe(
       logueado => {
         const usuario = logueado as Usuario;
@@ -38,10 +38,30 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/dashboard']);
           this.notificacion.cerrarNotificacion();
         } else {
-
+          setTimeout(() => {
+            this.notificacion.lanzarNotificacion({
+              btnCerrar: true,
+              color: 'red',
+              descripcion: 'No se encontró el usuario ingresado. Por favor intente de nuevo.',
+              titulo: 'Inicio de sesión.',
+              btnUno: {},
+              btnDos: {}
+            }, true);
+          }, 600);
         }
       }, error => {
         console.log('Error inicio de sesión: ', error);
+        this.notificacion.cerrarNotificacion();
+        setTimeout(() => {
+          this.notificacion.lanzarNotificacion({
+            btnCerrar: true,
+            color: 'red',
+            descripcion: 'Error al intentar iniciar sesión. Por favor intente de nuevo.',
+            titulo: 'Inicio de sesión.',
+            btnUno: {},
+            btnDos: {}
+          }, true);
+        }, 600);
       }
     )
   }

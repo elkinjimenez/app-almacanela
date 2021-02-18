@@ -22,8 +22,20 @@ export class ModalNotificaService {
     private router: Router,
   ) { }
 
-  lanzarNotificacion(notificacion: Notificacion) {
-    this.notificacion = notificacion;
+  lanzarNotificacion(notificacion: Notificacion, esperar: boolean) {
+    $('#modalNotifica').modal('hide');
+    if (esperar) {
+      setTimeout(() => {
+        this.notificacion = notificacion;
+        this.mostrarModal();
+      }, 600);
+    } else {
+      this.notificacion = notificacion;
+      this.mostrarModal();
+    }
+  }
+
+  private mostrarModal() {
     $('#modalNotifica').modal('show');
   }
 

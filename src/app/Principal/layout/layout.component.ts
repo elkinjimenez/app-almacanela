@@ -15,13 +15,24 @@ export class LayoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('Pasa por aquí: ', this.camposGenerales.usuarioLogueado);
     if (this.camposGenerales.usuarioLogueado) {
       this.notificacion.lanzarNotificacion({
         btnCerrar: true,
         color: 'purple',
-        descripcion: 'Ya se encuentra un usuario logueado...',
-        titulo: 'Usuario logueado.'
+        descripcion: 'Ya se encuentra un usuario con datos de acceso a la aplicación...',
+        titulo: 'Usuario logueado.',
+        btnUno: {
+          direcciona: '/',
+          visible: true,
+          habilitar: false,
+          texto: 'Cerrar sesión'
+        },
+        btnDos: {
+          direcciona: '/dashboard',
+          visible: true,
+          habilitar: true,
+          texto: 'Ir al dashboard'
+        }
       });
     }
   }

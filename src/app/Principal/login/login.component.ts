@@ -26,11 +26,12 @@ export class LoginComponent implements OnInit {
       btnCerrar: false,
       color: 'purple',
       descripcion: 'Iniciando sesión, por favor espere...',
-      titulo: 'Inicio de sesión.'
+      titulo: 'Inicio de sesión.',
+      btnUno: {},
+      btnDos: {}
     });
     this.logueoServicio.inicioSesion(this.inicioSesion.usuario, this.inicioSesion.clave).subscribe(
       logueado => {
-        console.log('Usuario logueado: ', logueado);
         const usuario = logueado as Usuario;
         if (usuario.estadoRespuesta) {
           sessionStorage.setItem('dXN1YXJpbw', window.btoa(unescape(encodeURIComponent(JSON.stringify(usuario)))));

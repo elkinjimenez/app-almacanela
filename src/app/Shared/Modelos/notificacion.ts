@@ -3,4 +3,13 @@ export interface Notificacion {
     descripcion: string;
     color: string;
     btnCerrar: boolean;
+    btnUno: Boton;
+    btnDos: Boton;
+}
+
+interface Boton {
+    visible?: boolean;
+    habilitar?: boolean;
+    texto?: string;
+    direcciona?: string;
 }

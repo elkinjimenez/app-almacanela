@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Notificacion } from '../Modelos/notificacion';
 
 declare var $: any;
@@ -8,14 +9,18 @@ declare var $: any;
 })
 export class ModalNotificaService {
 
-  notificacion: Notificacion = {
+  notificacion = {
     btnCerrar: true,
     color: 'purple',
     titulo: 'Hola...',
-    descripcion: 'Seré tu asistente de notificaciones, aquí te mostraré qué es lo que está sucediendo en todo el proyecto.'
-  };
+    descripcion: 'Seré tu asistente de notificaciones, aquí te mostraré qué es lo que está sucediendo en todo el proyecto.',
+    btnUno: {},
+    btnDos: {}
+  } as Notificacion;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   lanzarNotificacion(notificacion: Notificacion) {
     this.notificacion = notificacion;
@@ -25,6 +30,17 @@ export class ModalNotificaService {
   cerrarNotificacion() {
     setTimeout(() => {
       $('#modalNotifica').modal('hide');
-    }, 800);
+    }, 600);
+  }
+
+  accionBtnUno() {
+    this.router.navigate([this.notificacion.btnUno.direcciona]);
+    this.cerrarNotificacion();
+  }
+
+  accionBtnDos() {
+    this.router.navigate([this.notificacion.btnDos.direcciona]);
+    this.cerrarNotificacion();
+
   }
 }

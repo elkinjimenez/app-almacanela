@@ -12,6 +12,12 @@
             <div class="col-12">
               <h6>{{d.notificacion.descripcion}}</h6>
             </div>
+            <div class="col-12 d-flex justify-content-between">
+              <button (click)="d.accionBtnUno()" *ngIf="d.notificacion.btnUno.visible" [disabled]="!d.notificacion.btnUno.habilitar"
+                class="btn m-1 px-0 mt-3 btn-outline-white btn-block">{{d.notificacion.btnUno.texto}}</button>
+              <button (click)="d.accionBtnDos()" *ngIf="d.notificacion.btnDos.visible" [disabled]="!d.notificacion.btnDos.habilitar"
+                class="btn m-1 px-0 mt-3 btn-outline-white btn-block">{{d.notificacion.btnDos.texto}}</button>
+            </div>
           </div>
         </div>
       </div>

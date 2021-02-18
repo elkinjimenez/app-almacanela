@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalNotificaService } from '../../Servicios/modal-notifica.service';
 
 @Component({
   selector: 'app-modal-notifica',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalNotificaComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public d: ModalNotificaService,
+  ) { }
 
   ngOnInit(): void {
   }

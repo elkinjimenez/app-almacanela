@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactoComponent } from './Principal/contacto/contacto.component';
-import { LandingPageComponent } from './Principal/landing-page/landing-page.component';
-import { QuienesSomosComponent } from './Principal/quienes-somos/quienes-somos.component';
+import { LayoutComponent } from './Principal/layout/layout.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
-  { path: 'contacto', component: ContactoComponent },
-  { path: 'quienes-somos', component: QuienesSomosComponent },
+  {
+    path: '',
+    component: LayoutComponent,
+    loadChildren: () => import('./Principal/principal.module').then(m => m.PrincipalModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./Dashboard/dashboard.module').then(m => m.DashboardModule)
+  }
+
 ];
 
 @NgModule({

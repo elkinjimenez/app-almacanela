@@ -6,8 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { FormsModule } from '@angular/forms';
-import { InicioComponent } from './inicio/inicio.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -15,16 +15,14 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     ContactoComponent,
     QuienesSomosComponent,
-    InicioComponent,
-    NavbarComponent
+    NavbarComponent,
+    LayoutComponent
   ],
   imports: [
     CommonModule,
     PrincipalRoutingModule,
     FormsModule
   ],
-  exports: [
-    InicioComponent
-  ]
+  exports: []
 })
 export class PrincipalModule { }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlServicios: 'https://almacanelalean.com/',
+  urlServicios: 'https://www.almacanelalean.com/api-almacanela-ws',
 };
 
 /*

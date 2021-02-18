@@ -15,7 +15,7 @@ export class LogueoService {
   ) { }
 
   inicioSesion(usuario: string, clave: string): Observable<Usuario> {
-    const URL = environment.urlServicios + 'api-almacanela-ws/api/usuario/inicioSesion?usuario=' + usuario + '&clave=' + clave;
+    const URL = environment.urlServicios + '/usuario/inicioSesion?usuario=' + usuario + '&clave=' + clave;
     return this.http.get<Usuario>(URL).pipe(
       retry(3),
     );

@@ -6,7 +6,7 @@ import { Usuario } from 'src/app/Modelos/usuario';
 })
 export class CamposGeneralesService {
 
-  usuarioLogueado: Usuario | undefined = undefined;
+  usuarioLogueado = {} as Usuario;
 
   constructor() { }
 }

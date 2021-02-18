@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CamposGeneralesService } from 'src/app/Shared/Servicios/campos-generales.service';
 
 @Component({
   selector: 'app-modulos',
@@ -7,12 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModulosComponent implements OnInit {
 
-  usuarioLogueado: any;
+  constructor(
+    public camposGenerales: CamposGeneralesService,
+  ) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.usuarioLogueado = sessionStorage.getItem('usuario');
-  }
+  ngOnInit(): void { }
 
 }

@@ -1,0 +1,48 @@
+<!-- <nav class="navbar navbar-expand-lg fixed-top grey lighten-2 z-depth-0">
+  <a class="navbar-brand font-weight-bold grey-text" routerLink="">Almacanela</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars grey-ic"></i>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto d-flex align-items-center justify-content-start">
+      <li class="nav-item">
+        <a class="nav-link waves-effect waves-light grey-text rounded-circle"><i class="far fa-bell fa-lg"></i></a>
+      </li>
+      <li class="">
+        <a mat-icon-button [matMenuTriggerFor]="menu" class="nav-link grey-text">
+          <i class="fas fa-user-circle fa-2x"></i>
+        </a>
+        <mat-menu style="z-index: 10000;" #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>fingerprint</mat-icon>
+            <span>Mis datos</span>
+          </button>
+          <button class="font-weight-bold text-danger" mat-menu-item>
+            <mat-icon color="warn">logout</mat-icon>
+            <span>Cerrar sesión</span>
+          </button>
+        </mat-menu>
+      </li>
+    </ul>
+  </div>
+</nav> -->
+
+<div class="d-flex justify-content-end align-items-center">
+  <a class="grey-text m-1">
+    <i class="far fa-bell fa-lg m-2"></i>
+  </a>
+  <a [matMenuTriggerFor]="menu" class="grey-text m-1 waves-effect">
+    <i class="fas fa-user-circle fa-2x m-2"></i>
+  </a>
+</div>
+<mat-menu style="z-index: 10000;" #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>fingerprint</mat-icon>
+    <span>Mis datos</span>
+  </button>
+  <button (click)="cerrarCesion()" class="font-weight-bold text-danger" mat-menu-item>
+    <mat-icon color="warn">logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+</mat-menu>

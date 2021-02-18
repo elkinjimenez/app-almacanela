@@ -8,9 +8,13 @@ import { CamposGeneralesService } from 'src/app/Shared/Servicios/campos-generale
 })
 export class ModulosComponent implements OnInit {
 
+  hora: any;
+
   constructor(
     public camposGenerales: CamposGeneralesService,
-  ) { }
+  ) {
+    this.hora = new Date();
+  }
 
   ngOnInit(): void { }
 

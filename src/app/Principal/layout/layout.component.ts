@@ -15,7 +15,6 @@ export class LayoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('Usuario: ', this.camposGenerales.usuarioLogueado);
     if (this.camposGenerales.usuarioLogueado.estado) {
       this.notificacion.lanzarNotificacion({
         btnCerrar: true,

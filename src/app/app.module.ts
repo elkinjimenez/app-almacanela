@@ -17,7 +17,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     AngularMaterialModule,
     HttpClientModule,
     PrincipalModule,

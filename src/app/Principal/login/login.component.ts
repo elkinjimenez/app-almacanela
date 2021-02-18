@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogueoService } from 'src/app/Core/logueo.service';
 import { Usuario } from 'src/app/Modelos/usuario';
+import { CamposGeneralesService } from 'src/app/Shared/Servicios/campos-generales.service';
 import { ModalNotificaService } from 'src/app/Shared/Servicios/modal-notifica.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
     private logueoServicio: LogueoService,
     private router: Router,
     private notificacion: ModalNotificaService,
+    private camposGenerales: CamposGeneralesService,
   ) { }
 
   ngOnInit(): void { }
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit {
       logueado => {
         const usuario = logueado as Usuario;
         if (usuario.estadoRespuesta) {
+          this.camposGenerales.usuarioLogueado = usuario;
           sessionStorage.setItem('dXN1YXJpbw', window.btoa(unescape(encodeURIComponent(JSON.stringify(usuario)))));
           this.router.navigate(['/dashboard']);
           this.notificacion.cerrarNotificacion();
@@ -67,7 +70,6 @@ export class LoginComponent implements OnInit {
   }
 
 }
-
 
 interface DatosUsuario {
   usuario: string;

@@ -1,4 +1,47 @@
-<div class="container-fuild m-5">
-    <h1 class="font-weight-bold">Hola, {{camposGenerales.usuarioLogueado.usuario}}...</h1>
-    <h6>El sistema se está renovando, pronto se tentrá acceso a nuevas funcionalidades.</h6>
+<app-nav></app-nav>
+<div class="container-fuild p-5">
+  <h1 class="h1-responsive font-weight-bold">
+    <span *ngIf="hora.getHours() < 12"><i class="fas fa-cloud-sun"></i><br>Buenos días</span>
+    <span *ngIf="hora.getHours() >= 12 && hora.getHours() < 18"><i class="fas fa-cloud-sun"></i><br>Buenas tardes</span>
+    <span *ngIf="hora.getHours() >= 18"><i class="fas fa-cloud-moon"></i><br>Buenas noches</span>,
+    {{camposGenerales.usuarioLogueado.usuario | lowercase}}...
+  </h1>
+  <h5 class="grey-text h5-responsive">Hoy es: {{hora | date}}</h5>
+  <hr>
+  <h1 class="font-weight-bold">Módulos</h1>
+  <div class="row text-center white-text">
+    <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+      <div class="card mb-4 purple-gradient waves-effect">
+        <div class="px-1 py-4">
+          <i class="fas fa-brush fa-3x"></i>
+          <h6 class="h6-responsive mt-3">Moldes</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+      <div class="card mb-4 purple-gradient waves-effect">
+        <div class="px-1 py-4">
+          <i class="fas fa-archive fa-3x"></i>
+          <h6 class="h6-responsive mt-3">Artículos</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+      <div class="card mb-4 purple-gradient waves-effect">
+        <div class="px-1 py-4">
+          <i class="fas fa-clipboard-check fa-3x"></i>
+          <h6 class="h6-responsive mt-3">Inventario</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+      <div class="card mb-4 purple-gradient waves-effect">
+        <div class="px-1 py-4">
+          <i class="fas fa-user-cog fa-3x"></i>
+          <h6 class="h6-responsive mt-3">Usuarios</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h6 class="mt-4 text-center">El sistema se está renovando, pronto se tentrá acceso a nuevas funcionalidades.</h6>
 </div>

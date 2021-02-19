@@ -1,10 +1,12 @@
 <app-nav></app-nav>
 <div class="container-fuild p-5">
   <h1 class="h1-responsive font-weight-bold">
-    <span *ngIf="hora.getHours() < 12"><i class="fas fa-cloud-sun"></i><br>Buenos días</span>
-    <span *ngIf="hora.getHours() >= 12 && hora.getHours() < 18"><i class="fas fa-cloud-sun"></i><br>Buenas tardes</span>
-    <span *ngIf="hora.getHours() >= 18"><i class="fas fa-cloud-moon"></i><br>Buenas noches</span>,
-    {{camposGenerales.usuarioLogueado.usuario | lowercase}}...
+    <span *ngIf="hora.getHours() <= 5"><i class="fas fa-moon"></i><br>!Buenos días</span>
+    <span *ngIf="hora.getHours() >=6 && hora.getHours() < 12"><i class="fas fa-cloud-sun"></i><br>!Buenos días</span>
+    <span *ngIf="hora.getHours() >= 12 && hora.getHours() < 18"><i class="fas fa-cloud-sun"></i><br>!Buenas
+      tardes</span>
+    <span *ngIf="hora.getHours() >= 18"><i class="fas fa-cloud-moon"></i><br>!Buenas noches</span>,
+    {{camposGenerales.usuarioLogueado.idPersona.nombres | titlecase }}!
   </h1>
   <h5 class="grey-text h5-responsive">Hoy es: {{hora | date}}</h5>
   <hr>

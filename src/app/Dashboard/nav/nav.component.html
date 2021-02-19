@@ -29,14 +29,20 @@
 </nav> -->
 
 <div class="d-flex justify-content-end align-items-center">
-  <a class="grey-text m-1">
+  <a data-toggle="modal" data-target="#modalNotificaciones" class="grey-text m-1 waves-effect">
     <i class="far fa-bell fa-lg m-2"></i>
   </a>
-  <a [matMenuTriggerFor]="menu" class="grey-text m-1 waves-effect">
+  <a [matMenuTriggerFor]="menuUsuario" class="grey-text m-1 waves-effect">
     <i class="fas fa-user-circle fa-2x m-2"></i>
   </a>
 </div>
-<mat-menu style="z-index: 10000;" #menu="matMenu">
+<mat-menu style="z-index: 10000;" #menuUsuario="matMenu">
+  <div class="px-4 pt-3 text-center grey-text">
+    <h6 class="font-weight-bold m-0">{{camposGenerales.usuarioLogueado.idPersona.nombres | titlecase }}
+      {{camposGenerales.usuarioLogueado.idPersona.apellidos | titlecase }}</h6>
+    <small>{{camposGenerales.usuarioLogueado.idPersona.telefono}}</small>
+    <hr>
+  </div>
   <button mat-menu-item>
     <mat-icon>fingerprint</mat-icon>
     <span>Mis datos</span>
@@ -46,3 +52,23 @@
     <span>Cerrar sesión</span>
   </button>
 </mat-menu>
+<div class="modal fade" id="modalNotificaciones" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h4 class="font-weight-bold">Notificaciones</h4>
+          <a data-dismiss="modal" class="fas fa-times-circle close purple-ic"></a>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <h6 class="my-5">Nuevo sistema de notificaciones, próximamente...</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

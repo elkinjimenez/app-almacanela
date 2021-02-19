@@ -12,7 +12,7 @@ export class NavComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private camposGenerales: CamposGeneralesService,
+    public camposGenerales: CamposGeneralesService,
   ) { }
 
   ngOnInit(): void {

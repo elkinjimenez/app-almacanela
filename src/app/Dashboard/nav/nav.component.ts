@@ -19,7 +19,7 @@ export class NavComponent implements OnInit {
   }
 
   cerrarCesion() {
-    sessionStorage.clear();
+    localStorage.clear();
     this.camposGenerales.usuarioLogueado = {} as Usuario;
     this.router.navigate(['/']);
 

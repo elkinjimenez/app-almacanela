@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         const usuario = logueado as Usuario;
         if (usuario.estadoRespuesta) {
           this.camposGenerales.usuarioLogueado = usuario;
-          sessionStorage.setItem('dXN1YXJpbw', window.btoa(unescape(encodeURIComponent(JSON.stringify(usuario)))));
+          localStorage.setItem('dXN1YXJpbw', window.btoa(unescape(encodeURIComponent(JSON.stringify(usuario)))));
           this.router.navigate(['/dashboard']);
           this.notificacion.cerrarNotificacion();
         } else {

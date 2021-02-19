@@ -13,7 +13,7 @@ export class AppComponent {
     private router: Router,
     private camposGenerales: CamposGeneralesService,
   ) {
-    const usuarioLogueado = sessionStorage.getItem('dXN1YXJpbw');
+    const usuarioLogueado = localStorage.getItem('dXN1YXJpbw');
     if (usuarioLogueado) {
       const usuario = JSON.parse(decodeURIComponent(escape(window.atob(<string>usuarioLogueado))))
       if (usuario) {

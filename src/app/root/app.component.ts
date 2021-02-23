@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { CamposGeneralesService } from '../Shared/Servicios/campos-generales.service';
 
@@ -8,6 +8,8 @@ import { CamposGeneralesService } from '../Shared/Servicios/campos-generales.ser
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  // installEvent: any = null;
 
   constructor(
     private router: Router,
@@ -25,5 +27,21 @@ export class AppComponent {
       this.router.navigate(['/']);
     }
   }
+
+    // @HostListener('window:beforeinstallprompt', ['$event'])
+  // onBeforeInstallPrompt(event: Event) {
+  //   console.log('Evento: ', event);
+  //   event.preventDefault();
+  //   this.installEvent = event;
+  // }
+
+  // installByUser() {
+  //   if (this.installEvent) {
+  //     this.installEvent.prompt();
+  //     this.installEvent.userChoice.then(
+  //       (rta: any) => console.log('Rta: ', rta)
+  //     )
+  //   }
+  // }
 
 }

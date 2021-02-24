@@ -1,7 +1,7 @@
 {
   "name": "app almacanela",
   "short_name": "Almacanela APP",
-  "theme_color": "#82e891",
+  "theme_color": "#a797db",
   "background_color": "#a797db",
   "display": "standalone",
   "scope": "./",

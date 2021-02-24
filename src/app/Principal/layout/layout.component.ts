@@ -19,7 +19,7 @@ export class LayoutComponent implements OnInit {
       this.notificacion.lanzarNotificacion({
         btnCerrar: true,
         color: 'purple',
-        descripcion: 'Ya se encuentra un usuario con datos de acceso a la aplicación...',
+        descripcion: 'Hola ' + this.camposGenerales.usuarioLogueado.idPersona.nombres.toLowerCase() + ', estás de vuelta...',
         titulo: 'Usuario logueado.',
         btnUno: {
           direcciona: '/',

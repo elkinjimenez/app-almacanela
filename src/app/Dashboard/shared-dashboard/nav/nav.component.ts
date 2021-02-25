@@ -15,8 +15,7 @@ export class NavComponent implements OnInit {
     public camposGenerales: CamposGeneralesService,
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   cerrarCesion() {
     localStorage.clear();

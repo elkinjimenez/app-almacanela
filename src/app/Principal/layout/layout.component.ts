@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Notificacion } from 'src/app/Shared/Modelos/notificacion';
 import { CamposGeneralesService } from 'src/app/Shared/Servicios/campos-generales.service';
 import { ModalNotificaService } from 'src/app/Shared/Servicios/modal-notifica.service';
 
@@ -16,7 +17,7 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.camposGenerales.usuarioLogueado.estado) {
-      this.notificacion.lanzarNotificacion({
+      const notifi = {
         btnCerrar: true,
         color: 'purple',
         descripcion: 'Hola ' + this.camposGenerales.usuarioLogueado.idPersona.nombres.toLowerCase() + ', estás de vuelta...',
@@ -33,7 +34,8 @@ export class LayoutComponent implements OnInit {
           habilitar: true,
           texto: 'Ir al dashboard'
         }
-      }, false);
+      } as Notificacion;
+      this.notificacion.abrirNotificacion(notifi, false);
     }
   }
 }

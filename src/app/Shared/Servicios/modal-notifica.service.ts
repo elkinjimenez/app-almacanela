@@ -22,37 +22,33 @@ export class ModalNotificaService {
     private router: Router,
   ) { }
 
-  lanzarNotificacion(notificacion: Notificacion, esperar: boolean) {
-    $('#modalNotifica').modal('hide');
+  abrirNotificacion(notificacion: Notificacion, esperar: boolean) {
     if (esperar) {
+      this.cambioEstadoModal(false);
       setTimeout(() => {
         this.notificacion = notificacion;
-        this.mostrarModal();
+        this.cambioEstadoModal(true);
       }, 600);
     } else {
       this.notificacion = notificacion;
-      this.mostrarModal();
+      this.cambioEstadoModal(true);
     }
-  }
+  };
 
-  private mostrarModal() {
-    $('#modalNotifica').modal('show');
-  }
-
-  cerrarNotificacion() {
-    setTimeout(() => {
-      $('#modalNotifica').modal('hide');
-    }, 600);
+  cambioEstadoModal(estado: boolean, esperar?: boolean) {
+    $('#modalNotifica').modal(estado ? 'show' : 'hide');
+    esperar ? setTimeout(() => {
+      this.cambioEstadoModal(estado)
+    }, 600) : null;
   }
 
   accionBtnUno() {
     this.router.navigate([this.notificacion.btnUno.direcciona]);
-    this.cerrarNotificacion();
+    this.cambioEstadoModal(false);
   }
 
   accionBtnDos() {
     this.router.navigate([this.notificacion.btnDos.direcciona]);
-    this.cerrarNotificacion();
-
+    this.cambioEstadoModal(false);
   }
 }

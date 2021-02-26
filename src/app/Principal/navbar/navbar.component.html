@@ -14,6 +14,10 @@
         <a class="nav-link waves-effect waves-light grey-text rounded-pill" routerLink="contacto"
           routerLinkActive="active">Contacto</a>
       </li>
+      <li *ngIf="eventoInstalacion" class="nav-item active">
+        <a (click)="agregarADispositivo()"
+          class="nav-link waves-effect font-weight-bold purple-text waves-light rounded-pill">Instalar aplicación</a>
+      </li>
     </ul>
   </div>
 </nav>

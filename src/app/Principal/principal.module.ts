@@ -5,7 +5,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LayoutComponent } from './layout/layout.component';
 
@@ -19,6 +19,7 @@ import { LayoutComponent } from './layout/layout.component';
     LayoutComponent
   ],
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     PrincipalRoutingModule,
     FormsModule

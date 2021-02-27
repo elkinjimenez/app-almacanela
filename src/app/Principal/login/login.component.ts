@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LogueoService } from 'src/app/Core/logueo.service';
 import { Usuario } from 'src/app/Modelos/usuario';
@@ -13,7 +14,8 @@ import { ModalNotificaService } from 'src/app/Shared/Servicios/modal-notifica.se
 })
 export class LoginComponent implements OnInit {
 
-  inicioSesion = { usuario: '', clave: '' } as DatosUsuario
+  usuario = new FormControl('');
+  clave = new FormControl('');
 
   constructor(
     private logueoServicio: LogueoService,
@@ -34,7 +36,7 @@ export class LoginComponent implements OnInit {
       btnDos: {}
     } as Notificacion;
     this.notificacion.abrirNotificacion(notifi, false);
-    this.logueoServicio.inicioSesion(this.inicioSesion.usuario, this.inicioSesion.clave).subscribe(
+    this.logueoServicio.inicioSesion(this.usuario.value, this.clave.value).subscribe(
       logueado => {
         const usuario = logueado as Usuario;
         if (usuario.estadoRespuesta) {
@@ -47,7 +49,7 @@ export class LoginComponent implements OnInit {
             const notifi = {
               btnCerrar: true,
               color: 'red',
-              descripcion: 'No se encontró el usuario ' + this.inicioSesion.usuario + '. Por favor intente de nuevo.',
+              descripcion: 'No se encontró el usuario ' + this.usuario.value + '. Por favor intente de nuevo.',
               titulo: 'Inicio de sesión.',
               btnUno: {},
               btnDos: {}

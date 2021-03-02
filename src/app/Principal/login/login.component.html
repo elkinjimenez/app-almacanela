@@ -31,8 +31,7 @@
                   <button data-dismiss="modal" class="btn btn-block btn-outline-secondary btn-lg px-0">Cancelar</button>
                 </div>
                 <div class="col-6">
-                  <button data-dismiss="modal" (click)="iniciarSesion()"
-                    [disabled]="!(usuario.value != '' && clave.value != '')"
+                  <button data-dismiss="modal" (click)="iniciarSesion()" [disabled]="(clave.invalid || usuario.invalid)"
                     class="btn btn-block btn-purple btn-lg px-0">Ingresar</button>
                 </div>
               </div>

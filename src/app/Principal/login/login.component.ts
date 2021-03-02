@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LogueoService } from 'src/app/Core/logueo.service';
 import { Usuario } from 'src/app/Modelos/usuario';
@@ -14,8 +14,8 @@ import { ModalNotificaService } from 'src/app/Shared/Servicios/modal-notifica.se
 })
 export class LoginComponent implements OnInit {
 
-  usuario = new FormControl('');
-  clave = new FormControl('');
+  usuario = new FormControl('', Validators.required);
+  clave = new FormControl('', Validators.required);
 
   constructor(
     private logueoServicio: LogueoService,

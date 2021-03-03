@@ -24,4 +24,10 @@ export class NavComponent implements OnInit {
 
   }
 
+  vueltaDashboard(){
+    console.log('regreso a:')
+    this.router.navigate(['/dashboard']);
+
+  }
+
 }

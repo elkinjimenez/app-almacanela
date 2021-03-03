@@ -93,6 +93,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     OverlayModule,
     PortalModule,
     ScrollingModule,
+    LayoutModule,
   ],
   exports: [
     A11yModule,

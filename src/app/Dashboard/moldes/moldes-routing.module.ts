@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PrincipalMoldesComponent } from './principal-moldes/principal-moldes.component';
+import { ContenedorMoldesComponent } from './contenedor-moldes/contenedor-moldes.component';
+import { LandingMoldesComponent } from './landing-moldes/landing-moldes.component';
+import { ListadoMoldesComponent } from './listado-moldes/listado-moldes.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: PrincipalMoldesComponent,
+    component: ContenedorMoldesComponent,
+    children: [
+      { path: '', component: LandingMoldesComponent },
+      { path: 'listado', component: ListadoMoldesComponent },
+    ]
   },
 ];
 

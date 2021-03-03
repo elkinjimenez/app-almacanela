@@ -1,0 +1,27 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav grey lighten-3 rounded-lg m-2 border-0 z-depth-5" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <h5 class="h5-responsive font-weight-bold p-3">Moldes</h5>
+    <mat-nav-list>
+      <a mat-list-item routerLink="listado">Listado de moldes</a>
+      <a mat-list-item>Nuevo molde</a>
+      <a mat-list-item>Moldes inactivos</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="d-flex justify-content-between">
+      <div>
+        <span></span>
+        <button type="button" class="grey lighten-1 white-ic m-2" aria-label="Toggle sidenav" mat-icon-button
+          (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Menú desplegable">more_vert</mat-icon>
+        </button>
+      </div>
+      <app-nav></app-nav>
+    </div>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrincipalMoldesComponent } from './principal-moldes.component';
+import { ListadoMoldesComponent } from './listado-moldes.component';
 
-describe('PrincipalMoldesComponent', () => {
-  let component: PrincipalMoldesComponent;
-  let fixture: ComponentFixture<PrincipalMoldesComponent>;
+describe('ListadoMoldesComponent', () => {
+  let component: ListadoMoldesComponent;
+  let fixture: ComponentFixture<ListadoMoldesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrincipalMoldesComponent ]
+      declarations: [ ListadoMoldesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrincipalMoldesComponent);
+    fixture = TestBed.createComponent(ListadoMoldesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
